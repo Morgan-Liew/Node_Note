@@ -118,11 +118,52 @@ Node
       __dirname
          - 当前模块所在文件夹的完整路径
 
+exports 和 module.exports
+      - 通过exports 只能使用.的方式来向外暴露内部变量
+         exports.xxx = xxx
 
-
-
-
-
-
+      - 而module.exports既可以通过.的形式，也可以直接赋值
+         module.exports.xxx = xxxx
+         module.exports = {}
 
 ### 包 package
+
++ CommonJS的包含规范允许将一组相关的模块组合到一起，形成一组完整的工具。
++ CommonJS的包规范由包结构和包描述文件两个部分组成
++ 包结构
+      - 用于组织包中的各种文件
+      包实际上就是一个压缩文件，解压后还原为目录
+      应包含如下文件：
+         - package.json   描述文件
+         - bin   可执行二进制文件
+         - lib   js代码
+         - doc   文档
+         - test  单元测试
+
++ 包描述文件
+      - 描述包的相关信息，以供外部读取分析
+      用于表达非代码相关的信息，是一个JSON格式文件，位于包的根目录下
+
+### npm简介
+    Node Package Manage ，Node.js 标准的软件包管理器
+
+    NPM 命令
+    查看版本     npm -v
+    查看包版本 npm version
+    帮助说明     npm
+    搜索模块包   npm search packageName
+    当前目录安装 npm install packageName
+    全局模式安装 npm install packageName -g
+    写入生产依赖 --save
+
+    国内镜像 => cnpm
+
+### node引入包的流程
+    node引入模块时：
+      先在当前目录的node_modules中寻找是否含有该模块，有则直接使用
+      没有则去上一级目录的node_modules中寻找，有则直接使用
+      还没有则再去上一级目录寻找，直到找到并使用
+      最后到磁盘的根目录，还没有，则报错
+
+
+
