@@ -197,3 +197,5 @@ exports 和 module.exports
       3.保存并关闭文件
             fs.closeSync(fd)
                -fd 要关闭的文件的描述符
+      
+
